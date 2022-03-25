@@ -57,7 +57,7 @@ if __name__ == '__main__' :
     # image = fetch_image(image_name)
     # print(type(image))
     # print(image)
-
+    download_annotations()
     download_images()
 
 
