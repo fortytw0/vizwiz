@@ -1,0 +1,6 @@
+tensorflow
+tqdm
+dill
+scikit-image
+sklearn
+wget
