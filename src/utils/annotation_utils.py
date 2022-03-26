@@ -10,7 +10,7 @@ import tensorflow as tf
 
 input_sequence_len = 30
 vocabulary_size = 10000
-embedding_size = 256
+embedding_size = 100
 
 annotation_dir = 'data/annotation'
 splits = ['train', 'val']

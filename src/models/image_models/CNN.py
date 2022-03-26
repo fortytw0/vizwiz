@@ -24,6 +24,8 @@ class CNN(object) :
         cnn = layers.MaxPool2D()(cnn)
         cnn = layers.Conv2D(32, (3,3), activation='relu')(cnn)
         cnn = layers.MaxPool2D()(cnn)
+        cnn = layers.Conv2D(32, (3,3), activation='relu')(cnn)
+        cnn = layers.MaxPool2D()(cnn)
 
 
         flat = layers.Flatten()(cnn)
