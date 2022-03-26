@@ -78,16 +78,17 @@ class TrainGenerator(object) :
 
             annotation_batch = self.annotations[self.start:self.end]
             batch_images, batch_questions, batch_Y = self._retrieve_annotations(annotation_batch)
-            if (len(batch_images) != self.batch_size*10) or (len(batch_questions) != self.batch_size*10) or (len(batch_Y) != self.batch_size*10): 
-                print(len(batch_images))
-                print(len(batch_questions))
-                print(len(batch_Y))
+            
+            if (batch_images==False) or (batch_questions==False) or (batch_Y==False): 
 
-
-            self.i += 1
-            self.start = self.i * self.batch_size
-            self.end = self.start + self.batch_size
-            yield (np.array(batch_images), np.array(batch_questions)), np.array(batch_Y)
+                self.i += 1
+                self.start = self.i * self.batch_size
+                self.end = self.start + self.batch_size
+            else : 
+                self.i += 1
+                self.start = self.i * self.batch_size
+                self.end = self.start + self.batch_size
+                yield (np.array(batch_images), np.array(batch_questions)), np.array(batch_Y)
 
     def _reset_iterators(self) :
         
@@ -113,7 +114,7 @@ class TrainGenerator(object) :
 
             except Exception as e: 
                 print(e)
-                pass
+                return False, False, False
 
         return batch_images, batch_questions, batch_Y
 
