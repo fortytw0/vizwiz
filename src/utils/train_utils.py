@@ -95,14 +95,18 @@ class TrainGenerator(object) :
         batch_Y = []
         
         for annotation in annotation_batch : 
-            img = self._retrieve_image(annotation['image'])
-            question = self._retrieve_question(annotation['question'])
-            answers = self._retrieve_answers(annotation['answers'])
+            try :
+                img = self._retrieve_image(annotation['image'])
+                question = self._retrieve_question(annotation['question'])
+                answers = self._retrieve_answers(annotation['answers'])
 
-            for answer in answers : 
-                batch_images.append(img)
-                batch_questions.append(question)
-                batch_Y.append(answer)
+                for answer in answers : 
+                    batch_images.append(img)
+                    batch_questions.append(question)
+                    batch_Y.append(answer)
+
+            except : 
+                pass
 
         return batch_images, batch_questions, batch_Y
 
